@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+<body>
+    <h1>Contact List</h1>
+    <a href="{% url 'create_contact' %}">Create a New Contact</a>
+    <table>
+        <tr>
+            <th>Contact Name</th>
+            <th>Email</th>
+            <th>Created Time</th>
+            <th>Actions</th>
+        </tr>
+        {% for contact in contacts %}
+        <tr>
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.created_time }}</td>
+            <td>
+                <a href="{% url 'contact_detail' contact.id %}">View</a> |
+                <a href="{% url 'edit_contact' contact.id %}">Edit</a> |
+                <a href="{% url 'delete_contact' contact.id %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No contacts found.</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- Footer should be here, not within the table -->
+    <footer>
+        <hr>
+        <p>&copy; 2023 Created by Clifton Johnson</p>
+    </footer>
+</body>
+</html>
