@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Contact</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+<body>
+    <h1>Create a New Contact</h1>
+    <!-- The form for creating a new contact -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+        <a href="{% url 'contact_list' %}" class="cancel-button">Cancel</a>
+    </form>
+    <!-- Link to navigate back to the contact list -->
+    <a href="{% url 'contact_list' %}">Back to Contact List</a>
+    <!-- Footer -->
+    <footer>
+        <hr>
+        <p>&copy; 2023 Created by Clifton Johnson</p>
+    </footer>
+</body>
+</html>
