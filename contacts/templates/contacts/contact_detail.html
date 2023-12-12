@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+<body>
+    <h1>Contact Details</h1>
+    <!-- Display contact details here -->
+    <p>Name: {{ contact.name }}</p>
+    <p>Email: {{ contact.email }}</p>
+    <!-- Display notes details here -->
+    <div>
+    <p>Notes:<p> 
+        <div class="notes-content">
+            {{ contact.notes }}
+        </div>
+    <p>Created Time: {{ contact.created_time|date:"D, d M Y H:i" }}</p>
+
+    <!-- Links to edit and delete the current contact -->
+    <div class="contact-actions">
+        <a href="{% url 'edit_contact' contact.id %}" class="action-button edit-button">Edit</a>
+        <a href="{% url 'delete_contact' contact.id %}" class="action-button delete-button">Delete</a>
+        <a href="{% url 'contact_list' %}" class="action-button home-button">Home</a>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <hr>
+        <p>&copy; 2023 Created by Clifton Johnson</p>
+    </footer>
+</body>
+</html>
