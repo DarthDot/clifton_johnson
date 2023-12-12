@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Delete</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+<body>
+    <h1>Confirm Delete</h1>
+    <p>Are you sure you want to delete "{{ contact.name }}"?</p>
+    <!-- The form to confirm deletion -->
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+        <a href="{% url 'contact_list' %}" class="cancel-button">Cancel</a>
+    </form>
+    <!-- Link to navigate back to the contact detail page -->
+    <a href="{% url 'contact_detail' contact.id %}"> Check Contact Details</a>
+    
+    <!-- Footer with copyright line -->
+    <footer>
+        <hr>
+        <p>&copy; 2023 Created by Clifton Johnson</p>
+    </footer>
+</body>
+</html>
