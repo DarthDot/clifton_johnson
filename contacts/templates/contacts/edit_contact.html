@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Contact</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+<body>
+    <h1>Edit Contact</h1>
+    <!-- The form for editing an existing contact -->
+    <form method="post">
+        {% csrf_token %}
+        <!-- Display the form fields here -->
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+        <!-- 'Cancel' button to go back to the contact detail page -->
+        <a href="{% url 'contact_detail' contact.id %}" class="cancel-button">Cancel</a>
+    </form>
+    <!-- Link to navigate back to the contact list (acting as 'Home') -->
+    <a href="{% url 'contact_list' %}" class="home-button">Home</a>
+    <!-- Add your footer here -->
+    <footer>
+        <hr>
+        <p>&copy; 2023 Created by Clifton Johnson</p>
+    </footer>
+</body>
+</html>
